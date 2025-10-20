@@ -27,7 +27,7 @@ A **multiplayer Tic-Tac-Toe game** using **Node.js**, **WebSockets**, and **Redi
 1. **Clone the repository**
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/YohaiSamimi/Tic-Tac-Toe
 cd tic-tac-toe
 ```
 
@@ -48,7 +48,7 @@ npm install
 4. **Start Redis** (if using Docker):
 
 ```bash
-docker run -p 6379:6379 redis
+docker run -d -p 6379:6379 --name redis redis:latest
 ```
 
 ---
@@ -69,16 +69,17 @@ npm start
 ```
 
 * By default, server runs on port `3001`.
-* To use a different port:
+* To use a another port:
 
 ```bash
-npm start -- --port=3002
+set PORT=3002
+npm start
 ```
 
 * You should see:
 
 ```
-Server running on port 3001
+Server running on port 3002
 ```
 
 ---
@@ -154,12 +155,3 @@ Next turn: X
 * **Port already in use:** Change the server port or close the conflicting process.
 * **Redis connection refused:** Make sure Redis is running locally or update the client URL.
 * **Type errors in client/server:** Ensure dependencies are installed and the code is built using `npm run build`.
-
----
-
-## Future Improvements
-
-* Persistent game storage
-* Multiple concurrent games
-* Web interface for better UX
-* Spectator mode
