@@ -1,0 +1,17 @@
+{
+  "name": "tic-tac-toe-client",
+  "version": "1.0.0",
+  "main": "dist/client.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/client.js"
+  },
+  "dependencies": {
+    "ws": "^8.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.8.1",
+    "@types/ws": "^8.18.1",
+    "typescript": "^5.2.0"
+  }
+}

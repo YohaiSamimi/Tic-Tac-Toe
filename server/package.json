@@ -1,0 +1,19 @@
+{
+  "name": "tic-tac-toe-server",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "redis": "^4.6.13",
+    "ws": "^8.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.8.1",
+    "@types/ws": "^8.18.1",
+    "typescript": "^5.2.0"
+  }
+}
