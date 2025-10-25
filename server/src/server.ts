@@ -47,7 +47,7 @@ async function startServer() {
 
         if (!games[gameId]) {
           games[gameId] = {
-            board: [["","",""],["","",""],["","",""]],
+            board: [["", "", ""], ["", "", ""], ["", "", ""]],
             nextTurn: "X",
             players: {}
           };
@@ -124,14 +124,24 @@ async function startServer() {
 
   function checkWinner(board: string[][]): string | null {
     const lines = [
-      [[0,0],[0,1],[0,2]], [[1,0],[1,1],[1,2]], [[2,0],[2,1],[2,2]],
-      [[0,0],[1,0],[2,0]], [[0,1],[1,1],[2,1]], [[0,2],[1,2],[2,2]],
-      [[0,0],[1,1],[2,2]], [[0,2],[1,1],[2,0]]
+      // Rows
+      [[0, 0], [0, 1], [0, 2]],
+      [[1, 0], [1, 1], [1, 2]],
+      [[2, 0], [2, 1], [2, 2]],
+      // Columns
+      [[0, 0], [1, 0], [2, 0]],
+      [[0, 1], [1, 1], [2, 1]],
+      [[0, 2], [1, 2], [2, 2]],
+      // Diagonals
+      [[0, 0], [1, 1], [2, 2]],
+      [[0, 2], [1, 1], [2, 0]]
     ];
-    for (let line of lines) {
-      const [a,b,c] = line;
-      if (board[a[0]][a[1]] && board[a[0]][a[1]]===board[b[0]][b[1]] && board[a[0]][a[1]]===board[c[0]][c[1]]) 
-        return board[a[0]][a[1]];
+    for (const [[r1, c1], [r2, c2], [r3, c3]] of lines) {
+      const player = board[r1][c1];
+      if (player &&
+        player === board[r2][c2] &&
+        player === board[r3][c3])
+        return player;
     }
     return null;
   }
