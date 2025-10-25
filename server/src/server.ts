@@ -28,6 +28,7 @@ const pub = createClient();
 const sub = createClient();
 
 async function startServer() {
+  //Player X → Server A → Redis → Server B → Player O
   await pub.connect();
   await sub.connect();
   await sub.subscribe("tic-tac-toe", (msg: string) => handleRedisMessage(JSON.parse(msg)));
@@ -70,6 +71,8 @@ async function startServer() {
   });
 
   async function handleRedisMessage(data: MoveMessage) {
+    //The previous player made a move and the board 
+    // needs to update the board without updating the redis again.
     await handleMove(data.gameId, data.playerId, data.row, data.col, true);
   }
 
